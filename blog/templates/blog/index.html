@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+
+                        {# the spaces will ensure that this template fits well into the parent #}
+                        {% block blog-main %}
+                        <div class="blog-post">
+                            {% if latest_post_list %}
+                            <ul class="blog-list">
+                                {% for post in latest_post_list %}
+                                <li class="blog-post-title"><a href="{% url 'blog:detail' post.id post.slug %}">{{ post.title }}</a></li>
+                                {{ post.summary|linebreaks}}
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <p>No posts are available.</p>
+                            {% endif %}
+                            {% if is_paginated %}
+                            <div class="pagination">
+                                <span class="page_links">
+                                    {% if page_obj.has_previous %}
+                                    <a href="{% url 'blog:index_page' page_obj.previous_page_number %}">previous</a>
+                                    {% endif%}
+                                    <span class="page_current">
+                                        Page {{ page_obj.number}} of {{page_obj.paginator.num_pages }}
+                                    </span>
+                                    {% if page_obj.has_next %}
+                                    <a href="{% url 'blog:index_page' page_obj.next_page_number %}">next</a>
+                                    {% endif%}
+                                </span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endblock blog-main %}

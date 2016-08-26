@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block body-main %}
+                <div class="jumbotron">
+                    <h2>Ghagric</h2>
+                    <p>The place for your agri-info.</p>
+                        <!-- Three columns of text below the carousel -->
+                    <div class="container apps">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img class="img-rounded img-responsive center-block" src="{% static 'img/fly.JPG' %}" alt="News" width="150" height="150" />
+                                <h2>News</h2>
+                            </div><!-- /.col-lg-4 -->
+                            <div class="col-xs-4">
+                                <img class="img-rounded img-responsive center-block" src="{% static 'img/fly.JPG' %}" alt="Blog" width="150" height="150">
+                                <h2>Blog</h2>
+                            </div><!-- /.col-lg-4 -->
+                            <div class="col-xs-4">
+                                <img class="img-rounded img-responsive center-block" src="{% static 'img/fly.JPG' %}" alt="Notes" width="150" height="150">
+                                <h2>Firms</h2>
+                            </div><!-- /.col-lg-4 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img class="img-rounded img-responsive center-block" src="{% static 'img/fly.JPG' %}" alt="News" width="150" height="150" />
+                                <h2>Agri-schools</h2>
+                            </div><!-- /.col-lg-4 -->
+                            <div class="col-xs-4">
+                                <img class="img-rounded img-responsive center-block" src="{% static 'img/fly.JPG' %}" alt="Blog" width="150" height="150">
+                                <h2>Notable farms</h2>
+                            </div><!-- /.col-lg-4 -->
+                            <div class="col-xs-4">
+                                <img class="img-rounded img-responsive center-block" src="{% static 'img/fly.JPG' %}" alt="Notes" width="150" height="150">
+                                <h2>Agri-notes</h2>
+                            </div><!-- /.col-lg-4 -->
+                        </div><!-- /.row -->
+                    </div>
+                </div>
+{% endblock body-main %}

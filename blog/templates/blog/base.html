@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>{% block title %}Ghagric Blog- Making agric sexy{% endblock title %}</title>
+        {% block style %}
+        <!-- Bootstrap -->
+        <link href="{% static 'blog/css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{% static 'blog/css/navbar-static-top.css' %}" rel="stylesheet">
+        <link href="{% static 'blog/css/custom.css' %}" rel="stylesheet">
+        <link href="{% static 'blog/css/sticky-footer.css' %}" rel="stylesheet">
+        <link href="{% static 'blog/css/blog.css' %}" rel="stylesheet">
+        {% endblock style %}
+    </head>
+    <body onload="process()">
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Ghagric</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'blog:index' %}">Blog</a></li>
+                        <li><a href="">Firms</a></li>
+                        <li><a href="#contact">News</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'contact' %}">Contact <span class="sr-only">(current)</span></a></li>
+                        <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div class="container">
+            {% block container %}
+            <div class="body-main">
+                <div class="blog-container">
+                    <div class="blog-header">
+                        <h2 class="blog-title">The Ghagric Blog</h2>
+                        <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8 blog-main">
+                        {% block blog-main %}
+                        {% endblock blog-main %}
+                        </div><!-- /.blog-main -->
+                        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                            <div class="sidebar-module sidebar-module-inset">
+                                <h4>Ajax</h4>
+
+                                    <div id="ajax"></div>
+
+                            </div>
+                            <div class="sidebar-module">
+                                <h4>Archives</h4>
+                                {% if months %}
+                                <ol class="list-unstyled">
+                                    {% for month in months %}
+                                    <li><a href="{% url 'blog:archive_month' month.year month.short %}">{{ month.month }} {{ month.year }}</a></li>
+                                    {% endfor %}
+                                </ol>
+                                {% else %}
+                                <p>No archives are available.</p>
+                                {% endif %}
+                            </div>
+                            <div class="sidebar-module">
+                                <h4>Elsewhere</h4>
+                                <ol class="list-unstyled">
+                                    <li><a href="#">GitHub</a></li>
+                                    <li><a href="#">Twitter</a></li>
+                                    <li><a href="#">Facebook</a></li>
+                                </ol>
+                            </div>
+                        </div><!-- /.blog-sidebar -->
+                    </div><!-- /.row -->
+                </div><!-- /.blog-container -->
+            </div>
+            {% endblock container %}
+        </div>
+        <footer class="blog-footer">
+            <div class="row">
+                <div class="col-md-4 text-muted">
+                    <p>CONTACT</p>
+                    <span class="txt">+233242271258</span><br />
+                    <span class="txt">ib.waki@yahoo.com</span>
+                </div>
+                <div class="col-md-4 text-muted">
+                    <p>OUR MISSION</p>
+                    <span class="txt">
+                        To provide quality data and news as well as articles with regardS to AGRICULTURE
+                    </span>
+                </div>
+                <div class="col-md-4 text-muted">
+                    <p>PARTNERS</p>
+                    <span class="txt">Waki Company</span><br />
+                    <span class="txt">GH Agriculture</span>
+                </div>
+            </div>
+        </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog/js/jquery-1.12.3.js' %}"></script>
+    <script src="{% static 'blog/js/custom.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
+</html>
+
+
+
+

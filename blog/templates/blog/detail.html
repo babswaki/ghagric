@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+                        {# the spaces will ensure that this template fits well into the parent #}
+                        {% block blog-main %}
+                        <div class="blog-post">
+                            <h2 class="blog-post-title">{{ post.title }}</h2>
+                            <p class="blog-post-meta">{{ post.first_created }} <a href="#">{{ post.author }}</a></p>
+                            {{ post.summary|linebreaks }}
+                            <hr />
+                            {{ post.content|linebreaks }}
+
+                            {% if post.comment_set.all %}
+                            <h2>Comments</h2>
+                            <div class="comments">
+                                <p>
+                                {% with total=post.comment_set.all.count %}
+                                    {{ total }} comment{{ total|pluralize }}:
+                                {% endwith %}
+                                {% for comment in post.comment_set.all %}
+                                </p>
+                                <!--<a href="{{ comment.website }}">{{ comment.name }}</a> said on {{ comment.created_on }}-->
+                                <span class="blog-post-meta">
+                                    <a href={{ comment.website }}>{{ comment.full_name }}</a> said on {{ comment.pub_date }}
+                                </span>
+                                {{ comment.content|linebreaks }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            <br />
+
+                            <h3>Add Comment</h3>
+
+                            <div class="row">
+                                <div class="col-sm-6" class="col-md-4">
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        {{ form|crispy }}
+                                        <input class="btn btn-primary" type="submit" name="submit" value="Submit" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {% endblock blog-main %}
+

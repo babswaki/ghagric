@@ -1,0 +1,42 @@
+
+/* Center align the text within the three columns in the jumbotron on homepage */
+.apps .col-xs-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.apps h2 {
+  font-weight: normal;
+}
+.apps .col-xs-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+/* h2 font sizes for different media */
+@media all and (max-width: 500px) {
+    h2 {
+        font-size: 0.8em;
+    }
+}
+
+/* From the sticky-footer.css*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+.footer {
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: auto;
+  background-color: #f5f5f5;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.container .text-muted .txt{
+  color: blue;
+}

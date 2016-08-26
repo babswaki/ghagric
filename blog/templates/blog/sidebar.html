@@ -1,0 +1,6 @@
+                            <h4>Archives</h4>
+                            <ol class="list-unstyled">
+                                {% for month in months %}
+                                <li><a href="{% url 'blog:archive_month' month.3 month.2 %}">{{ month.1 }} {{ month.3}}</a></li>
+                                {% endfor %}
+                            </ol>
